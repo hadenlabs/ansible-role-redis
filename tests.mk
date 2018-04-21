@@ -11,7 +11,7 @@ test.help:
 	@echo ''
 
 test: clean
-	@echo $(MESSAGE) Running tests $(END)
+	make test.help
 
 test.lint: clean
 	pre-commit run --all-files --verbose

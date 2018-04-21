@@ -3,7 +3,10 @@
 USER:=ubuntu
 ANSIBLE_DIR:=$(PROVISION_DIR)/ansible
 
-ansible.help: 
+ansible:
+	make ansible.help
+
+ansible.help:
 	@echo '    Ansible:'
 	@echo ''
 	@echo '        ansible.encrypt            encrypt by store'
