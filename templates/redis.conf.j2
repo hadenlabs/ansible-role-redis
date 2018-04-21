@@ -52,7 +52,7 @@ port 6379
 # Examples:
 #
 # bind 192.168.1.100 10.0.0.1
-bind 0.0.0.0
+bind "{{ redis_bind_ip }}"
 
 # Specify the path for the unix socket that will be used to listen for
 # incoming connections. There is no default, so Redis will not listen
@@ -130,9 +130,11 @@ databases "{{redis_nro_databases}}"
 #
 #   save ""
 
+{% if redis_snapshots %}
 save 900 1
 save 300 10
 save 60 10000
+{% endif %}
 
 # By default Redis will stop accepting writes if RDB snapshots are enabled
 # (at least one save point) and the latest background save failed.
@@ -147,7 +149,7 @@ save 60 10000
 # and persistence, you may want to disable this feature so that Redis will
 # continue to work as usual even if there are problems with disk,
 # permissions, and so forth.
-stop-writes-on-bgsave-error yes
+stop-writes-on-bgsave-error {{ redis_stop-writes-on-bgsave-error }}
 
 # Compress string objects using LZF when dump .rdb databases?
 # For default that's set to 'yes' as it's almost always a win.
@@ -164,8 +166,10 @@ rdbcompression yes
 # tell the loading code to skip the check.
 rdbchecksum yes
 
+{% if redis_snapshots %}
 # The filename where to dump the DB
-dbfilename dump.rdb
+dbfilename "{{ redis_dbfilename }}"
+{% endif %}
 
 # The working directory.
 #
@@ -175,7 +179,7 @@ dbfilename dump.rdb
 # The Append Only File will also be created inside this directory.
 #
 # Note that you must specify a directory here, not a file name.
-dir /var/lib/redis
+dir "{{ redis_dir_snaphots }}"
 
 ################################# REPLICATION #################################
 
