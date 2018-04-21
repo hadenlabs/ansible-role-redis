@@ -1,6 +1,8 @@
 ---
 # defaults file for redis
 
+redis_nro_databases: 16
+
 redis_pip_packages:
   - name: "redis"
     state: "present"
