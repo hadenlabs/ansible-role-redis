@@ -1,0 +1,11 @@
+---
+# defaults file for redis
+
+redis_pip_packages:
+  - name: "redis"
+    state: "present"
+
+redis_dependencies:
+  - name: "python-dev"
+    version: ""
+  - name: "python-pip"
