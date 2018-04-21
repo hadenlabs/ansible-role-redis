@@ -1,0 +1,18 @@
+---
+# defaults file for redis
+
+redis_nro_databases: 16
+redis_snapshots: true
+redis_stop-writes-on-bgsave-error: no
+redis_dbfilename: "root"
+redis_dir_snaphots: "/var/lib/redis"
+redis_bind_ip: "0.0.0.0"
+
+redis_pip_packages:
+  - name: "redis"
+    state: "present"
+
+redis_dependencies:
+  - name: "python-dev"
+    version: ""
+  - name: "python-pip"
