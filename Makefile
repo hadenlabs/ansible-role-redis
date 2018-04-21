@@ -28,7 +28,7 @@ PROVISION_DIR:=$(ROOT_DIR)/provision
 FILE_README:=$(ROOT_DIR)/README.rst
 KEYS_DIR:="${HOME}/.ssh"
 
-pip_install := pip install
+pip_install := pip install -r
 
 include *.mk
 
